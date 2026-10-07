@@ -202,3 +202,40 @@ Go is the language behind Docker, Kubernetes and Terraform, so it is common in D
 - [ ] JWT and OAuth 2.0 (high level)
 - [ ] CVE vs CVSS score
 - [ ] Brute-force protection: account lockout, rate limiting
+
+---
+
+## 10. SQL playground
+
+Practice on my site's in-browser SQL playground (yize-c.github.io/learn.html#sql). Each line must match an exercise there word for word.
+
+- [ ] 1. SELECT / FROM: Show the name and major of every student.
+- [ ] 2. SELECT / FROM: Show the title and number of credits of every course.
+- [ ] 3. SELECT / FROM: Show every column of the enrollments table.
+- [ ] 4. WHERE: Find the names of students who live in Victoria.
+- [ ] 5. WHERE: Find enrollments with a grade of 85 or higher. Show student_id, course_id, and grade.
+- [ ] 6. WHERE: Find enrollments that don't have a grade yet. Show student_id and course_id.
+- [ ] 7. ORDER BY: List every student's name, year, and city, with the highest year first. For students in the same year, sort by city A–Z, and then by name A–Z.
+- [ ] 8. ORDER BY: List course titles and credits, from the most credits to the fewest. For courses with the same credits, sort titles A–Z.
+- [ ] 9. ORDER BY: Show the 3 highest grades (student_id, course_id, grade), highest first.
+- [ ] 10. COUNT / SUM: How many students are there?
+- [ ] 11. COUNT / SUM: What is the total number of credits across all courses?
+- [ ] 12. COUNT / SUM: How many enrollments have a grade? (Don't count the ones without a grade.)
+- [ ] 13. GROUP BY: How many students are in each major? Show the major and the count.
+- [ ] 14. GROUP BY: How many students are enrolled in each course? Show course_id and the count.
+- [ ] 15. GROUP BY: What is the highest grade in each term? Show term and the highest grade.
+- [ ] 16. LEFT JOIN: List every student's name with the course_id of each of their enrollments. Students with no enrollments must still appear, with NULL as the course_id.
+- [ ] 17. LEFT JOIN: List every course title with how many enrollments it has. Courses with no enrollments should show 0.
+- [ ] 18. LEFT JOIN: Find the names of students who aren't enrolled in any course.
+- [ ] 19. HAVING: Which majors have more than 2 students? Show the major and the count.
+- [ ] 20. HAVING: Which students are enrolled in at least 3 courses? Show student_id and the number of courses.
+- [ ] 21. HAVING: Which courses have an average grade above 80? Show course_id and the average rounded to 1 decimal place.
+- [ ] 22. INNER vs LEFT JOIN: Using an INNER JOIN, list each student's name with the title of each course they're enrolled in.
+- [ ] 23. INNER vs LEFT JOIN: Now start from courses and LEFT JOIN to enrollments: list every course title with the student_id of each enrollment (NULL if a course has none).
+- [ ] 24. INNER vs LEFT JOIN: How many rows does students INNER JOIN enrollments return, and how many does students LEFT JOIN enrollments return? Return one row with two columns: inner_rows and left_rows.
+- [ ] 25. Subqueries: Using a subquery with IN, find the names of students enrolled in course 105.
+- [ ] 26. Subqueries: Find enrollments whose grade is higher than the average of all grades. Show student_id, course_id, and grade.
+- [ ] 27. Subqueries: Find the title of the course (or courses) with the most credits.
+- [ ] 28. CASE WHEN: For each enrollment, show student_id, course_id, and a column called result: 'in progress' if there's no grade, 'pass' if the grade is 60 or more, and 'fail' otherwise.
+- [ ] 29. CASE WHEN: Label each course as 'light' (fewer than 3 credits), 'normal' (exactly 3), or 'heavy' (more than 3). Show title and the label.
+- [ ] 30. CASE WHEN: In one query, count how many enrollments are passing (grade 60 or more) and how many are failing (grade below 60). Return two columns: passing and failing. Enrollments without a grade count as neither.
