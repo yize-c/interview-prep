@@ -2,7 +2,7 @@
 
 My practice log for **QA Automation / DevOps** co-op interviews: coding problems, SQL, Bash, Go, and the core concepts behind networking, Linux, testing, DevOps and security.
 
-Each solution is written in my own words with:
+Each solution I add is written in my own words, with:
 - the approach
 - time and space complexity
 - what I learned or got wrong the first time
@@ -18,7 +18,7 @@ interview-prep/
 ├── sql/               # SQL solutions, e.g. 0175_combine_two_tables.sql
 ├── bash/              # Bash solutions, e.g. 0195_tenth_line.sh
 ├── go/                # Go basics, Go solutions and small tools
-└── notes/             # concept notes
+└── notes/             # concept notes (planned, not created yet)
     ├── networking.md
     ├── linux-os.md
     ├── testing.md
