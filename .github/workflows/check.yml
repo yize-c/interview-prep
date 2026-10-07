@@ -1,0 +1,63 @@
+name: Check solutions
+
+on:
+  # Pushes to main are checked directly; other branches through their pull request.
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# Read-only token: this job only reads the code.
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: File names and syntax
+    runs-on: ubuntu-latest
+    steps:
+      # Pinned to a full commit SHA (a tag can be moved; a SHA can't).
+      # Dependabot (.github/dependabot.yml) proposes updates.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # My portfolio site (yize-c.github.io) reads solutions by file name,
+      # so a misnamed file would silently not show up there.
+      - name: File names follow NNNN_problem_name.ext
+        run: |
+          bad=0
+          check() {  # folder, extension
+            for f in "$1"/*; do
+              [ -f "$f" ] || continue
+              name=$(basename "$f")
+              case "$name" in README.md|TEMPLATE."$2") continue ;; esac
+              if ! printf '%s' "$name" | grep -Eq "^[0-9]{4}_[a-z0-9_]+\.$2\$"; then
+                echo "::error file=$f::Rename to NNNN_problem_name.$2 (e.g. 0001_two_sum.$2)"
+                bad=1
+              fi
+            done
+          }
+          check leetcode py
+          check sql sql
+          check bash sh
+          check go go
+          exit $bad
+
+      - name: Python files compile
+        run: |
+          shopt -s nullglob
+          files=(leetcode/*.py)
+          [ ${#files[@]} -eq 0 ] || python3 -m py_compile "${files[@]}"
+
+      - name: Bash files parse
+        run: |
+          shopt -s nullglob
+          for f in bash/*.sh; do bash -n "$f"; done
+
+      - name: Go files are gofmt-formatted
+        run: |
+          out=$(gofmt -l go)
+          if [ -n "$out" ]; then
+            echo "Run gofmt -w on:"; echo "$out"; exit 1
+          fi
